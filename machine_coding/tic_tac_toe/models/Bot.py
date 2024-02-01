@@ -3,7 +3,7 @@ from machine_coding.tic_tac_toe.models.BotDifficulty import BotDifficulty
 from machine_coding.tic_tac_toe.models.Player import Player
 from machine_coding.tic_tac_toe.models.Symbol import Symbol
 from machine_coding.tic_tac_toe.strategies.bot_strategies.BotStrategy import BotStrategy
-from machine_coding.tic_tac_toe.strategies.bot_strategies.BotStrategyFactory import BotStrategyFactory
+from machine_coding.tic_tac_toe.factories.BotStrategyFactory import BotStrategyFactory
 
 
 class Bot(Player):
