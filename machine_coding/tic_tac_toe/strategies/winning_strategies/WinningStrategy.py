@@ -6,7 +6,6 @@ from machine_coding.tic_tac_toe.models.Move import Move
 
 
 class WinningStrategy(ABC):
-
     @abc.abstractmethod
     def check_winner(self, board: Board, move: Move) -> bool:
         pass

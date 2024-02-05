@@ -1,9 +1,15 @@
 from typing import List
 
 
-from machine_coding.tic_tac_toe.exceptions.InvalidBotCountException import InvalidBotCountException
-from machine_coding.tic_tac_toe.exceptions.InvalidMoveException import InvalidMoveException
-from machine_coding.tic_tac_toe.exceptions.InvalidPlayersCountException import InvalidPlayersCountException
+from machine_coding.tic_tac_toe.exceptions.InvalidBotCountException import (
+    InvalidBotCountException,
+)
+from machine_coding.tic_tac_toe.exceptions.InvalidMoveException import (
+    InvalidMoveException,
+)
+from machine_coding.tic_tac_toe.exceptions.InvalidPlayersCountException import (
+    InvalidPlayersCountException,
+)
 from machine_coding.tic_tac_toe.models.Board import Board
 from machine_coding.tic_tac_toe.models.Cell import Cell
 from machine_coding.tic_tac_toe.models.CellState import CellState
@@ -12,7 +18,9 @@ from machine_coding.tic_tac_toe.models.Move import Move
 from machine_coding.tic_tac_toe.models.MoveType import MoveType
 from machine_coding.tic_tac_toe.models.Player import Player
 from machine_coding.tic_tac_toe.models.PlayerType import PlayerType
-from machine_coding.tic_tac_toe.strategies.winning_strategies.WinningStrategy import WinningStrategy
+from machine_coding.tic_tac_toe.strategies.winning_strategies.WinningStrategy import (
+    WinningStrategy,
+)
 
 
 class Builder:
@@ -47,15 +55,15 @@ class Builder:
         return cnt
 
     def validate(self):
-
         if self.validate_bot_count() > 1:
             raise InvalidBotCountException("No of bots should be equal to 1")
 
         if len(self.players_list) != (self.dimension - 1):
-            raise InvalidPlayersCountException("No of players should be equal to board size - 1")
+            raise InvalidPlayersCountException(
+                "No of players should be equal to board size - 1"
+            )
 
     def build(self):
-
         self.validate()
 
         return Game(self.players_list, self.dimension, self.winning_strategies)
@@ -123,7 +131,6 @@ class Game:
             self.game_state = GameState.DRAW
 
     def check_winner(self, move: Move) -> bool:
-
         for winning_strategy in self.winning_strategies:
             if winning_strategy.check_winner(self.board, move):
                 return True
@@ -131,7 +138,6 @@ class Game:
         return False
 
     def undo(self):
-
         if self.pre_move_type == MoveType.UNDO:
             print("There should be at least one normal move to perform undo operation")
         else:
@@ -144,5 +150,7 @@ class Game:
             for winning_strategy in self.winning_strategies:
                 winning_strategy.handle_undo(self.board, move)
 
-            self.next_player_index = (self.next_player_index - 1 + len(self.players_list)) % len(self.players_list)
+            self.next_player_index = (
+                self.next_player_index - 1 + len(self.players_list)
+            ) % len(self.players_list)
             self.pre_move_type = MoveType.UNDO

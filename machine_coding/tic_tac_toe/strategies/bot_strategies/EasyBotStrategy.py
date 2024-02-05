@@ -5,7 +5,6 @@ from machine_coding.tic_tac_toe.strategies.bot_strategies.BotStrategy import Bot
 
 
 class EasyBotStrategy(BotStrategy):
-
     def bot_move(self, board: Board) -> tuple:
         size = board.size
 

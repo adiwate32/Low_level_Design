@@ -4,7 +4,9 @@ from machine_coding.tic_tac_toe.models.Board import Board
 from machine_coding.tic_tac_toe.models.Move import Move
 from machine_coding.tic_tac_toe.models.Symbol import Symbol
 
-from machine_coding.tic_tac_toe.strategies.winning_strategies.WinningStrategy import WinningStrategy
+from machine_coding.tic_tac_toe.strategies.winning_strategies.WinningStrategy import (
+    WinningStrategy,
+)
 
 
 class RowWinningStrategy(WinningStrategy):

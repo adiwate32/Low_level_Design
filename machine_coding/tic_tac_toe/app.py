@@ -1,12 +1,18 @@
-from machine_coding.tic_tac_toe.controllers.Gesnim_Controller import GameController
+from machine_coding.tic_tac_toe.controllers.Game_Controller import GameController
 from machine_coding.tic_tac_toe.models.Bot import Bot
 from machine_coding.tic_tac_toe.models.BotDifficulty import BotDifficulty
 from machine_coding.tic_tac_toe.models.GameState import GameState
 from machine_coding.tic_tac_toe.models.Player import Player
 from machine_coding.tic_tac_toe.models.Symbol import Symbol
-from machine_coding.tic_tac_toe.strategies.winning_strategies.ColWinningStrategy import ColWinningStrategy
-from machine_coding.tic_tac_toe.strategies.winning_strategies.DiagonalWinningStrategy import DiagonalWinningStrategy
-from machine_coding.tic_tac_toe.strategies.winning_strategies.RowWinningStrategy import RowWinningStrategy
+from machine_coding.tic_tac_toe.strategies.winning_strategies.ColWinningStrategy import (
+    ColWinningStrategy,
+)
+from machine_coding.tic_tac_toe.strategies.winning_strategies.DiagonalWinningStrategy import (
+    DiagonalWinningStrategy,
+)
+from machine_coding.tic_tac_toe.strategies.winning_strategies.RowWinningStrategy import (
+    RowWinningStrategy,
+)
 
 
 def main():
@@ -17,7 +23,11 @@ def main():
     dim = int(input())
 
     players_list = [Player("Abhishek", Symbol("X")), Bot(BotDifficulty.EASY)]
-    win_strategies = [RowWinningStrategy(), DiagonalWinningStrategy(), ColWinningStrategy()]
+    win_strategies = [
+        RowWinningStrategy(),
+        DiagonalWinningStrategy(),
+        ColWinningStrategy(),
+    ]
 
     game = game_controller.start_game(dim, players_list, win_strategies)
 
